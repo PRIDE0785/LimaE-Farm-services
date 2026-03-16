@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FarmEquip Uganda | The Ultimate Farmers Marketplace</title>
+  <!-- Font Awesome 6 + Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    html {
+      font-size: 14px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f3f8ef;
+      color: #1c331c;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ===== ENHANCED ANIMATIONS ===== */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 0 0 rgba(201, 162, 43, 0.7); }
+      70% { box-shadow: 0 0 0 18px rgba(201, 162, 43, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(201, 162, 43, 0); }
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInDown {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes rotateIcon {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 2s infinite;
+    }
+
+    .animate-slide-left {
+      animation: slideInLeft 0.7s ease-out forwards;
+    }
+
+    .animate-slide-right {
+      animation: slideInRight 0.7s ease-out forwards;
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.7s ease-out forwards;
+    }
+
+    .animate-slide-down {
+      animation: slideInDown 0.7s ease-out forwards;
+    }
+
+    .animate-scale {
+      animation: scaleIn 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+
+    .animate-bounce {
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .hover-rotate:hover i {
+      animation: rotateIcon 0.6s ease-in-out;
+    }
+
+    .shimmer-effect {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background-size: 1000px 100%;
+      animation: shimmer 3s infinite;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* ===== HERO SECTION WITH MULTIPLE FARM JPEGS ===== */
+    .hero {
+      background: 
+        linear-gradient(135deg, rgba(10, 40, 10, 0.85) 0%, rgba(50, 80, 30, 0.7) 50%, rgba(10, 30, 5, 0.9) 100%),
+        url('farm.jpeg') center/cover no-repeat;
+      min-height: 90vh;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 2rem 1rem;
+      border-bottom: 8px solid #e3b13c;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('farm1.jpeg') center/cover no-repeat;
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+      animation: float 15s infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent), 
+                  url('farm2.jpeg') bottom/cover no-repeat;
+      opacity: 0.2;
+      animation: slideInUp 1s;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      background: rgba(10, 30, 10, 0.4);
+      backdrop-filter: blur(10px);
+      padding: 4rem 3.5rem;
+      border-radius: 80px 15px 80px 15px;
+      box-shadow: 0 40px 70px -15px #041004, 0 0 0 3px rgba(255,215,0,0.3) inset;
+      border: 1px solid rgba(255,215,120,0.6);
+      z-index: 10;
+      transition: all 0.5s;
+    }
+
+    .hero-content:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 60px 90px -10px #000, 0 0 0 5px #f5c542 inset;
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-shadow: 4px 4px 0 #1e4d1e, 6px 6px 0 rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+
+    .hero h1:hover {
+      text-shadow: 6px 6px 0 #c9a22b, 8px 8px 0 #1e4d1e;
+      transform: scale(1.02);
+    }
+
+    .hero h1 i {
+      color: #f5c542;
+      margin-right: 0.8rem;
+      transition: transform 0.5s;
+      display: inline-block;
+    }
+
+    .hero h1:hover i {
+      transform: rotate(15deg) scale(1.3);
+    }
+
+    .hero .tagline {
+      font-size: 1.9rem;
+      margin: 2rem 0 2.5rem;
+      font-weight: 500;
+      border-left: 10px solid #f0b820;
+      padding-left: 2.5rem;
+      background: rgba(255,255,240,0.15);
+      border-radius: 0 80px 80px 0;
+      display: inline-block;
+      transition: all 0.4s;
+    }
+
+    .hero .tagline:hover {
+      background: rgba(255,215,0,0.3);
+      padding-left: 3.2rem;
+      border-left-width: 15px;
+    }
+
+    /* ===== ADMIN CONTACT CARD (ULTIMATE VERSION) ===== */
+    .admin-float-card {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(15px);
+      border-radius: 100px 20px 100px 20px;
+      padding: 1.4rem 3rem 1.4rem 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow: 0 30px 50px -10px #1f4f1f, 0 0 0 4px #ebc253, 0 0 20px #f5d742;
+      margin-top: 2.8rem;
+      transition: all 0.4s;
+      border: 1px solid gold;
+    }
+
+    .admin-float-card:hover {
+      transform: scale(1.07) translateY(-12px);
+      box-shadow: 0 45px 70px -5px #0a2b0a, 0 0 0 6px #f5d742, 0 0 40px #ffd700;
+    }
+
+    .admin-avatar {
+      background: #1a4f2a;
+      color: #fbd96d;
+      border-radius: 80px;
+      padding: 0.9rem 2.2rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+      border: 2px solid #f5c542;
+    }
+
+    .admin-avatar:hover {
+      background: #c9a22b;
+      color: #1a3b1a;
+      transform: rotate(3deg) scale(1.05);
+    }
+
+    .admin-contacts {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .admin-contacts a {
+      font-size: 2.5rem;
+      color: #2f4d2f;
+      transition: all 0.3s;
+      display: inline-block;
+      filter: drop-shadow(0 4px 6px #b8862b);
+    }
+
+    .admin-contacts a:hover {
+      transform: scale(1.4) rotate(12deg);
+      color: #b8862b;
+      filter: drop-shadow(0 8px 12px #f5c542);
+    }
+
+    .admin-note {
+      background: #ffe9bb;
+      border-radius: 60px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #1e3d1e;
+      transition: all 0.3s;
+      border: 2px dashed #c9a22b;
+      animation: pulse-glow 3s infinite;
+    }
+
+    .admin-note:hover {
+      background: #f5d48b;
+      transform: translateX(8px) scale(1.02);
+    }
+
+    /* ===== POPUP FORM STYLES (ENHANCED) ===== */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 30, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .popup-form {
+      background: white;
+      max-width: 600px;
+      width: 95%;
+      border-radius: 60px 15px 60px 15px;
+      padding: 3rem;
+      box-shadow: 0 50px 80px -15px #000, 0 0 0 5px #c9a22b, 0 0 0 10px rgba(201,162,43,0.3);
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.4s;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .popup-overlay.active .popup-form {
+      transform: scale(1) translateY(0);
+    }
+
+    .popup-form::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .popup-form::-webkit-scrollbar-track {
+      background: #e0ebd5;
+      border-radius: 10px;
+    }
+
+    .popup-form::-webkit-scrollbar-thumb {
+      background: #c9a22b;
+      border-radius: 10px;
+    }
+
+    .popup-form h2 {
+      font-size: 2.4rem;
+      color: #1e4d2e;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 3px solid #c9a22b;
+      padding-bottom: 0.8rem;
+    }
+
+    .popup-form h2 i {
+      color: #c9a22b;
+      animation: rotateIcon 0.8s;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.8rem;
+      font-size: 2.5rem;
+      color: #8b8b8b;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .close-popup:hover {
+      color: #c92b2b;
+      transform: rotate(180deg) scale(1.2);
+      background: #ffeeee;
+      box-shadow: 0 6px 15px rgba(201,43,43,0.3);
+    }
+
+    .form-group {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #1e4d2e;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 1.1rem 1.5rem;
+      border: 2px solid #d0e0c5;
+      border-radius: 40px;
+      font-size: 1rem;
+      transition: all 0.3s;
+      background: #f9fff9;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #c9a22b;
+      box-shadow: 0 0 0 6px rgba(201,162,43,0.25);
+      transform: scale(1.02) translateY(-2px);
+    }
+
+    .form-group textarea {
+      border-radius: 25px;
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .submit-btn {
+      background: #1e4d2e;
+      color: white;
+      border: none;
+      padding: 1.4rem;
+      border-radius: 80px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      width: 100%;
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #c9a22b;
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 30px -5px #a57c1e;
+    }
+
+    .submit-btn i {
+      transition: transform 0.3s;
+    }
+
+    .submit-btn:hover i {
+      transform: translateX(8px) scale(1.2);
+    }
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin: 1.2rem 0;
+      padding: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .contact-option.whatsapp {
+      background: #e8f5e8;
+      border-color: #25D366;
+    }
+
+    .contact-option.email {
+      background: #f0f0ff;
+      border-color: #c9a22b;
+    }
+
+    .contact-option:hover {
+      transform: scale(1.03) translateX(5px);
+      filter: brightness(1.02);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    /* ===== SEARCH & FILTER SECTION ===== */
+    .search-section {
+      background: white;
+      border-radius: 60px 15px 60px 15px;
+      padding: 2.5rem;
+      margin: -2.5rem auto 2.5rem;
+      max-width: 1200px;
+      box-shadow: 0 30px 40px -15px #1a3f1a, 0 0 0 2px #c9a22b inset;
+      position: relative;
+      z-index: 100;
+      border: 1px solid #f5d742;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+    }
+
+    .filter-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .filter-item label {
+      font-weight: 700;
+      color: #1e4d2e;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .filter-item select, .filter-item input {
+      padding: 1rem 1.2rem;
+      border: 3px solid #d0e0c5;
+      border-radius: 40px;
+      font-size: 1rem;
+      background: #f9fff9;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-item select:hover, .filter-item input:hover {
+      border-color: #c9a22b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 12px -8px #c9a22b;
+    }
+
+    .search-btn {
+      background: #1e4d2e;
+      color: white;
+      border: none;
+      padding: 1.2rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      width: 100%;
+      box-shadow: 0 8px 0 #0f3d0f;
+    }
+
+    .search-btn:active {
+      transform: translateY(5px);
+      box-shadow: 0 3px 0 #0f3d0f;
+    }
+
+    .search-btn:hover {
+      background: #c9a22b;
+      color: #1b381b;
+    }
+
+    .results-count {
+      font-size: 1.1rem;
+      color: #1e4d2e;
+      margin-top: 1.2rem;
+      text-align: right;
+      font-weight: 600;
+    }
+
+    /* ===== ROTATING BANNER ===== */
+    .rotating-banner {
+      background: linear-gradient(90deg, #1e4d2e, #2b6b2b, #c9a22b);
+      color: white;
+      padding: 1.3rem;
+      border-radius: 60px;
+      text-align: center;
+      font-size: 1.3rem;
+      margin: 2.5rem 0;
+      border: 4px solid #f5d742;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 20px -5px #1e4d2e;
+      animation: pulse-glow 3s infinite;
+    }
+
+    .rotating-text {
+      font-weight: 700;
+      background: rgba(0,0,0,0.3);
+      padding: 0.5rem 2rem;
+      border-radius: 50px;
+      display: inline-block;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== MACHINERY GRID ===== */
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1f5420;
+      margin: 2.5rem 0 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      opacity: 0;
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .section-title i {
+      background: #d9a92c;
+      color: white;
+      padding: 1rem;
+      border-radius: 50%;
+      font-size: 2rem;
+      transition: all 0.5s;
+    }
+
+    .section-title:hover i {
+      transform: rotate(360deg) scale(1.1);
+      background: #1f5420;
+    }
+
+    .sub {
+      color: #2b532b;
+      margin-bottom: 2.5rem;
+      font-size: 1.2rem;
+      border-bottom: 3px dashed #b7cfb0;
+      padding-bottom: 0.8rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin: 2.5rem 0;
+    }
+
+    .machine-card {
+      background: #ffffff;
+      border-radius: 45px 12px 45px 12px;
+      box-shadow: 0 20px 35px -12px #1b3f1b;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+      border: 1px solid #ddebd0;
+      opacity: 0;
+      animation: slideInUp 0.7s ease-out forwards;
+    }
+
+    .machine-card:hover {
+      transform: translateY(-20px) scale(1.03);
+      box-shadow: 0 40px 60px -15px #0f3d0f, 0 0 0 4px #c9a22b;
+    }
+
+    .card-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: transform 0.7s;
+    }
+
+    .machine-card:hover .card-img {
+      transform: scale(1.12) rotate(1deg);
+    }
+
+    .price-tag {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: #1b4f2b;
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      box-shadow: 0 8px 15px #111;
+      transition: all 0.4s;
+      animation: pulse-glow 3s infinite;
+    }
+
+    .machine-card:hover .price-tag {
+      background: #c9a22b;
+      color: #1b381b;
+      transform: scale(1.15) rotate(2deg);
+      right: 25px;
+      bottom: 25px;
+    }
+
+    .card-content {
+      padding: 1.8rem 1.5rem 2rem;
+      transition: all 0.3s;
+    }
+
+    .machine-card:hover .card-content {
+      background: #fafff5;
+    }
+
+    .card-content h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+
+    .machine-card:hover h3 {
+      color: #c9a22b;
+      transform: translateX(8px);
+    }
+
+    .category-badge {
+      display: inline-block;
+      background: #e9f2e3;
+      color: #1e4d2e;
+      padding: 0.3rem 1.3rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0.5rem 0 1rem;
+      border: 1px solid #c9a22b;
+    }
+
+    .location {
+      color: #3f613f;
+      font-weight: 600;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      margin: 1.2rem 0 1.5rem;
+    }
+
+    .btn-hire {
+      background: #1b4f2b;
+      color: white;
+      width: 100%;
+      padding: 1.1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 60px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hire::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-hire:hover::before {
+      left: 100%;
+    }
+
+    .btn-hire:hover {
+      background: #c9a22b;
+      color: #1b381b;
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 15px 25px -8px #a57c1e;
+    }
+
+    /* Machine image classes with local JPEGs */
+    .img-tractor { background-image: url('farm1.jpeg'); }
+    .img-harvester { background-image: url('farm2.jpeg'); }
+    .img-plow { background-image: url('farm3.jpeg'); }
+    .img-irrigation { background-image: url('farm.jpeg'); }
+    .img-ripper { background-image: url('farm1.jpeg'); }
+    .img-roller { background-image: url('farm2.jpeg'); }
+    .img-sprayer { background-image: url('farm3.jpeg'); }
+    .img-rotator { background-image: url('farm.jpeg'); }
+
+    /* ===== UPLOAD PANEL ===== */
+    .upload-panel {
+      background: linear-gradient(135deg, #d4eac4, #b8dba5), url('farm5.jpeg') right/cover no-repeat;
+      background-blend-mode: overlay;
+      border-radius: 80px 20px 80px 20px;
+      padding: 3rem 3rem;
+      box-shadow: 0 40px 50px -15px #1e4d2e, 0 0 0 4px #c9a22b inset;
+      border: 2px solid #f5d742;
+      margin: 3.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      transition: all 0.5s;
+    }
+
+    .upload-panel:hover {
+      box-shadow: 0 50px 70px -15px #0f3d0f, 0 0 0 6px #f5d742 inset;
+      transform: scale(1.01);
+    }
+
+    .upload-text {
+      flex: 2 1 320px;
+      background: rgba(255, 255, 250, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 70px;
+      padding: 2.5rem;
+      transition: all 0.4s;
+      border: 2px solid #f5c542;
+    }
+
+    .upload-text:hover {
+      background: rgba(255, 255, 250, 0.95);
+      transform: translateX(15px) scale(1.02);
+      box-shadow: 0 20px 30px -10px #c9a22b;
+    }
+
+    .upload-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .list-btn {
+      background: #c9a22b;
+      border: none;
+      padding: 1.4rem 3.5rem;
+      border-radius: 80px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: all 0.4s;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 12px 0 #7f621b;
+      border: 2px solid #ffe68f;
+    }
+
+    .list-btn:active {
+      transform: translateY(8px);
+      box-shadow: 0 4px 0 #7f621b;
+    }
+
+    .list-btn:hover {
+      background: #1e4d2e;
+      color: white;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 18px 0 #0f3d0f;
+    }
+
+    /* ===== APPROVAL NOTICE ===== */
+    .approval-highlight {
+      background: #fef6da;
+      border-radius: 80px;
+      padding: 2rem 3rem;
+      border-left: 20px solid #b37b2e;
+      font-size: 1.2rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+
+    .approval-highlight::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+      animation: rotateIcon 20s linear infinite;
+    }
+
+    .approval-highlight:hover {
+      transform: scale(1.02) translateX(10px);
+      background: #fff3c9;
+      border-left-width: 25px;
+    }
+
+    /* ===== FARMER BANNER ===== */
+    .farmer-banner {
+      margin: 4rem 0;
+      border-radius: 80px 20px 80px 20px;
+      overflow: hidden;
+      box-shadow: 0 40px 50px -10px #1a3b1a;
+      height: 280px;
+      background: url('coffee.jpeg') center/cover no-repeat;
+      background-attachment: fixed;
+      transition: all 0.5s;
+      position: relative;
+      border: 5px solid #c9a22b;
+    }
+
+    .farmer-banner:hover {
+      transform: scale(1.03);
+      box-shadow: 0 50px 70px -10px #0a2b0a;
+    }
+
+    .farmer-banner div {
+      background: linear-gradient(135deg, #1e4d2eb3, #c9a22b99, #1e4d2eb3);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: 800;
+      backdrop-filter: blur(4px);
+      transition: all 0.5s;
+      text-shadow: 3px 3px 0 #1e4d2e;
+    }
+
+    .farmer-banner:hover div {
+      backdrop-filter: blur(8px);
+      font-size: 3.5rem;
+      letter-spacing: 5px;
+    }
+
+    /* ===== FEATURES SECTION ===== */
+    .features-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 50px 10px 50px 10px;
+      text-align: center;
+      box-shadow: 0 15px 25px -10px #1e4d2e;
+      transition: all 0.3s;
+      border: 2px solid #e0ebd5;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 25px 35px -8px #c9a22b;
+      border-color: #c9a22b;
+    }
+
+    .feature-item i {
+      font-size: 3rem;
+      color: #c9a22b;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .feature-item:hover i {
+      transform: scale(1.2) rotate(5deg);
+      color: #1e4d2e;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #102010;
+      color: #cde2cd;
+      padding: 3rem;
+      text-align: center;
+      border-top: 10px solid #dbaa33;
+      margin-top: 4rem;
+    }
+
+    .footer a {
+      color: #f5d971;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .footer a:hover {
+      color: #ffffff;
+      transform: translateY(-5px) scale(1.15);
+      text-shadow: 0 5px 10px #f5c542;
+    }
+
+    /* Animation delays for cards */
+    .card-1 { animation-delay: 0.1s; }
+    .card-2 { animation-delay: 0.2s; }
+    .card-3 { animation-delay: 0.3s; }
+    .card-4 { animation-delay: 0.4s; }
+    .card-5 { animation-delay: 0.5s; }
+    .card-6 { animation-delay: 0.6s; }
+    .card-7 { animation-delay: 0.7s; }
+    .card-8 { animation-delay: 0.8s; }
+  </style>
+</head>
+<body>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content animate-scale">
+      <h1><i class="fas fa-tractor"></i> FarmEquip <span style="color: #fad65c;">Uganda</span></h1>
+      <div class="tagline">
+        <i class="fas fa-map-marker-alt" style="margin-right: 12px;"></i> The Ultimate Farmers Marketplace · Admin Approved
+      </div>
+      
+      <!-- ULTIMATE ADMIN CONTACT CARD -->
+      <div class="admin-float-card animate-bounce">
+        <span class="admin-avatar"><i class="fas fa-user-check"></i> Admin</span>
+        <span class="admin-note"><i class="fas fa-check-circle"></i> 24/7 Instant Approval</span>
+        <div class="admin-contacts">
+          <a href="https://wa.me/256779185824?text=Hello%20FarmEquip%20Admin%2C%20I%20need%20assistance%20with%20machinery" target="_blank" class="hover-rotate"><i class="fab fa-whatsapp"></i></a>
+          <a href="tel:+256779185824" class="hover-rotate"><i class="fas fa-phone-alt"></i></a>
+          <a href="sms:+256779185824" class="hover-rotate"><i class="fas fa-comment-sms"></i></a>
+          <a href="mailto:paddypride6@gmail.com" class="hover-rotate"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="max-width:1300px; margin:0 auto; padding:0 2rem;">
+    <!-- SEARCH & FILTER SECTION -->
+    <div class="search-section animate-slide-up">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:1.5rem;">
+        <i class="fas fa-sliders-h" style="color:#c9a22b; font-size:2rem;"></i>
+        <h3 style="font-size:1.8rem; font-weight:600;">Find Equipment by Category & Region</h3>
+      </div>
+      
+      <div class="filter-grid">
+        <div class="filter-item">
+          <label><i class="fas fa-tag"></i> Category</label>
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="tractor">Tractors</option>
+            <option value="harvester">Harvesters</option>
+            <option value="plough">Ploughs & Tillage</option>
+            <option value="irrigation">Irrigation</option>
+            <option value="ripper">Rippers & Subsoilers</option>
+            <option value="roller">Rollers & Land Prep</option>
+          </select>
+        </div>
+        
+        <div class="filter-item">
+          <label><i class="fas fa-map-pin"></i> Region</label>
+          <select id="regionFilter">
+            <option value="all">All Uganda</option>
+            <option value="central">Central</option>
+            <option value="eastern">Eastern</option>
+            <option value="western">Western</option>
+            <option value="northern">Northern</option>
+          </select>
+        </div>
+        
+        <div class="filter-item">
+          <label><i class="fas fa-money-bill"></i> Max Price (UGX/day)</label>
+          <input type="range" id="priceRange" min="0" max="300000" step="10000" value="300000">
+          <span id="priceValue" style="font-weight:600;">Up to 300k</span>
+        </div>
+      </div>
+      
+      <button class="search-btn" onclick="filterMachines()">
+        <i class="fas fa-search"></i> Search Machinery
+      </button>
+      
+      <div class="results-count" id="resultsCount">Showing <span id="visibleCount">12</span> approved machines</div>
+    </div>
+
+    <!-- ROTATING MACHINES BANNER -->
+    <div class="rotating-banner" id="rotatingBanner">
+      <span class="rotating-text"><i class="fas fa-sync-alt fa-spin"></i> <span id="rotatingMachine">🔥 New: Massey Ferguson 385 just listed in Wakiso!</span></span>
+    </div>
+
+    <!-- AVAILABLE MACHINES SECTION -->
+    <div class="section-title">
+      <i class="fas fa-tools"></i> <span>Available Machinery</span>
+    </div>
+    <div class="sub"><i class="fas fa-check-circle" style="color:#c9a22b;"></i> All machines admin verified · Updated daily</div>
+
+    <!-- MACHINERY GRID -->
+    <div class="grid" id="machineGrid"></div>
+
+    <!-- UPLOAD PANEL -->
+    <div class="upload-panel">
+      <div class="upload-text">
+        <h2><i class="fas fa-upload" style="color:#c4871f;"></i> Own Machinery? List It Now</h2>
+        <p style="font-size:1.2rem; margin:1.2rem 0;">Reach 5,000+ farmers across Uganda. Admin approval within 12 hours.</p>
+        <div style="background:#1e4d2e; color:white; padding:1rem 1.5rem; border-radius:60px; display:inline-block; margin:1rem 0;">
+          <i class="fas fa-user-tie"></i> Admin: +256 779 185824 | paddypride6@gmail.com
+        </div>
+        <button class="list-btn" onclick="openListForm()">
+          <i class="fas fa-plus-circle"></i> Start Listing
+        </button>
+      </div>
+    </div>
+
+    <!-- APPROVAL NOTICE -->
+    <div class="approval-highlight">
+      <i class="fas fa-clipboard-check" style="font-size:4rem; float:left; margin-right:2rem;"></i>
+      <p><strong style="font-size:2rem;">✓ Admin Verified Since 2024</strong><br>Every machine is vetted via photos & video. We connect you directly with verified owners after approval. Trusted by 2,500+ farmers.</p>
+      <div style="margin-top:1.5rem; display:flex; gap:2rem; flex-wrap:wrap;">
+        <span><i class="fas fa-check-circle" style="color:#2b7d2b;"></i> 247 machines available</span>
+        <span><i class="fas fa-check-circle" style="color:#2b7d2b;"></i> 38 pending approval</span>
+        <span><i class="fas fa-check-circle" style="color:#2b7d2b;"></i> Avg. response: 2 hours</span>
+      </div>
+    </div>
+
+    <!-- FEATURES SECTION -->
+    <div class="features-section">
+      <div class="feature-item animate-slide-up delay-1">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Admin Approved</h3>
+        <p>Every machine verified for safety</p>
+      </div>
+      <div class="feature-item animate-slide-up delay-2">
+        <i class="fas fa-whatsapp"></i>
+        <h3>Instant Connect</h3>
+        <p>Direct WhatsApp with admin</p>
+      </div>
+      <div class="feature-item animate-slide-up delay-3">
+        <i class="fas fa-clock"></i>
+        <h3>24hr Approval</h3>
+        <p>Fast listing verification</p>
+      </div>
+      <div class="feature-item animate-slide-up delay-4">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h3>Affordable Rates</h3>
+        <p>40% cheaper than buying</p>
+      </div>
+    </div>
+
+    <!-- FARMER BANNER -->
+    <div class="farmer-banner">
+      <div><i class="fas fa-heart" style="color:#ffd966;"></i> “Tukole Wamu” — Working Together <i class="fas fa-heart" style="color:#ffd966;"></i></div>
+    </div>
+  </div>
+
+  <!-- HIRE POPUP FORM -->
+  <div class="popup-overlay" id="hirePopup">
+    <div class="popup-form animate-scale">
+      <div class="close-popup" onclick="closeHirePopup()">&times;</div>
+      <h2><i class="fas fa-hand-pointer"></i> Request to Hire</h2>
+      <p style="margin-bottom:1.8rem; color:#4f6d4f; font-size:1.1rem;">Fill details below to connect with the owner via admin</p>
+      
+      <form id="hireForm" onsubmit="submitHireForm(event)">
+        <div class="form-group">
+          <label>Your Full Name *</label>
+          <input type="text" id="hirerName" required placeholder="e.g., Okello John">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="hirerPhone" required placeholder="07XX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label>District *</label>
+            <select id="hirerDistrict" required>
+              <option value="">Select District</option>
+              <option value="Kampala">Kampala</option>
+              <option value="Wakiso">Wakiso</option>
+              <option value="Jinja">Jinja</option>
+              <option value="Mbarara">Mbarara</option>
+              <option value="Gulu">Gulu</option>
+              <option value="Mbale">Mbale</option>
+              <option value="Lira">Lira</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Machine Interested In *</label>
+          <input type="text" id="machineName" readonly style="background:#eef7e9; font-weight:600;">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Hire Duration</label>
+            <select id="hireDuration">
+              <option value="1 day">1 day</option>
+              <option value="3 days">3 days</option>
+              <option value="1 week">1 week</option>
+              <option value="2 weeks">2 weeks</option>
+              <option value="1 month">1 month</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" id="hireDate">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea id="hireNotes" placeholder="Tell us about your farming needs..."></textarea>
+        </div>
+        
+        <div style="margin:1.8rem 0;">
+          <p style="font-weight:600; margin-bottom:1rem; font-size:1.1rem;">Send via:</p>
+          <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+            <label class="contact-option whatsapp">
+              <input type="radio" name="hireContactMethod" value="whatsapp" checked style="width:auto; margin-right:0.5rem;">
+              <i class="fab fa-whatsapp" style="color:#25D366; font-size:1.8rem;"></i> WhatsApp
+            </label>
+            <label class="contact-option email">
+              <input type="radio" name="hireContactMethod" value="email" style="width:auto; margin-right:0.5rem;">
+              <i class="fas fa-envelope" style="color:#c9a22b; font-size:1.8rem;"></i> Email
+            </label>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="hireSubmitBtn">
+          <i class="fab fa-whatsapp"></i> Submit Hire Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LIST MACHINERY POPUP FORM -->
+  <div class="popup-overlay" id="listPopup">
+    <div class="popup-form animate-scale">
+      <div class="close-popup" onclick="closeListPopup()">&times;</div>
+      <h2><i class="fas fa-upload"></i> List Your Machinery</h2>
+      <p style="margin-bottom:1.8rem; color:#4f6d4f; font-size:1.1rem;">Fill details below for admin approval (12hr response)</p>
+      
+      <form id="listForm" onsubmit="submitListForm(event)">
+        <div class="form-group">
+          <label>Owner Full Name *</label>
+          <input type="text" id="ownerName" required placeholder="e.g., Nabatanzi Sarah">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="ownerPhone" required placeholder="07XX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="ownerEmail" placeholder="optional">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Machine Type *</label>
+            <select id="machineType" required>
+              <option value="">Select Type</option>
+              <option value="Tractor">Tractor</option>
+              <option value="Harvester">Harvester</option>
+              <option value="Plough">Plough</option>
+              <option value="Irrigation">Irrigation System</option>
+              <option value="Ripper">Ripper/Subsoiler</option>
+              <option value="Roller">Roller</option>
+              <option value="Sprayer">Sprayer</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Daily Rate (UGX) *</label>
+            <input type="number" id="dailyRate" required placeholder="e.g., 70000">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>District *</label>
+            <select id="machineDistrict" required>
+              <option value="">Select District</option>
+              <option value="Kampala">Kampala</option>
+              <option value="Wakiso">Wakiso</option>
+              <option value="Jinja">Jinja</option>
+              <option value="Mbarara">Mbarara</option>
+              <option value="Gulu">Gulu</option>
+              <option value="Mbale">Mbale</option>
+              <option value="Lira">Lira</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Village/Area</label>
+            <input type="text" id="machineVillage" placeholder="e.g., Bweyogerere">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Machine Details / Features</label>
+          <textarea id="machineFeatures" placeholder="HP, attachments, condition, year, etc." rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Upload Photos (via WhatsApp)</label>
+          <div style="background:#e9f2e3; padding:1rem; border-radius:40px; text-align:center;">
+            <i class="fas fa-camera" style="color:#1e4d2e; font-size:2rem;"></i>
+            <p style="margin-top:0.5rem;">Send photos directly via WhatsApp after form submission</p>
+          </div>
+        </div>
+        
+        <div style="margin:1.8rem 0;">
+          <p style="font-weight:600; margin-bottom:1rem; font-size:1.1rem;">Send via:</p>
+          <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+            <label class="contact-option whatsapp">
+              <input type="radio" name="listContactMethod" value="whatsapp" checked style="width:auto; margin-right:0.5rem;">
+              <i class="fab fa-whatsapp" style="color:#25D366; font-size:1.8rem;"></i> WhatsApp
+            </label>
+            <label class="contact-option email">
+              <input type="radio" name="listContactMethod" value="email" style="width:auto; margin-right:0.5rem;">
+              <i class="fas fa-envelope" style="color:#c9a22b; font-size:1.8rem;"></i> Email
+            </label>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="listSubmitBtn">
+          <i class="fab fa-whatsapp"></i> Submit for Approval
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div style="font-size:2.5rem; margin-bottom:1.2rem;"><i class="fas fa-tractor"></i> FarmEquip Uganda</div>
+    <p style="font-size:1.3rem; margin:1.5rem 0;">Admin Contact: <a href="tel:+256779185824">+256 779 185824</a> | <a href="mailto:paddypride6@gmail.com">paddypride6@gmail.com</a></p>
+    <div style="margin:2rem 0; display:flex; justify-content:center; gap:2.5rem; font-size:2.5rem;">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 FarmEquip Uganda — Every Machine Verified, Every Farmer Supported</p>
+  </footer>
+
+  <script>
+    // Comprehensive machine database
+    const machines = [
+      { id:1, name:"Massey Ferguson 385", category:"tractor", region:"central", price:70000, location:"Wakiso", features:["85 HP","Plough incl"], image:"Massey Ferguson 385.jpeg", badge:"TRACTOR", dayRate:"70k" },
+      { id:2, name:"Combine Harvester TC56", category:"harvester", region:"eastern", price:250000, location:"Jinja", features:["18ft header","Operator"], image:"farm2.jpeg", badge:"HARVESTER", dayRate:"250k" },
+      { id:3, name:"Disc Plough 5-furrow", category:"plough", region:"western", price:45000, location:"Mbarara", features:["Heavy duty","Cat II/III"], image:"farm3.jpeg", badge:"TILLAGE", dayRate:"45k" },
+      { id:4, name:"Center Pivot Irrigation", category:"irrigation", region:"northern", price:120000, location:"Gulu", features:["20 ha/day","Solar kit"], image:"farm.jpeg", badge:"IRRIGATION", dayRate:"120k" },
+      { id:5, name:"Subsoiler/Ripper Heavy", category:"ripper", region:"northern", price:90000, location:"Lira", features:["Deep tillage","3-point"], image:"Subsoiler.jpeg", badge:"RIPPER", dayRate:"90k" },
+      { id:6, name:"Cambridge Roller 6m", category:"roller", region:"eastern", price:60000, location:"Mbale", features:["6m width","1.2 ton"], image:"farm2.jpeg", badge:"ROLLER", dayRate:"60k" },
+      { id:7, name:"Rotary Tiller 1.8m", category:"plough", region:"central", price:55000, location:"Kampala", features:["20 blades","PTO"], image:"farm3.jpeg", badge:"TILLAGE", dayRate:"55k" },
+      { id:8, name:"Boom Sprayer 1000L", category:"irrigation", region:"western", price:85000, location:"Fort Portal", features:["25m boom","Tractor mount"], image:"farm.jpeg", badge:"SPRAYER", dayRate:"85k" },
+      { id:9, name:"Maize Sheller Mobile", category:"harvester", region:"eastern", price:40000, location:"Tororo", features:["2 ton/hr","Diesel"], image:"Maize Sheller.jpeg", badge:"SHELLER", dayRate:"40k" },
+      { id:10, name:"Chisel Plough 7-tine", category:"plough", region:"central", price:50000, location:"Luwero", features:["Heavy duty","Cat III"], image:"farm2.jpeg", badge:"TILLAGE", dayRate:"50k" },
+      { id:11, name:"John Deere Tractor 5050", category:"tractor", region:"western", price:150000, location:"Mbarara", features:["75 HP","4WD"], image:"farm3.jpeg", badge:"TRACTOR", dayRate:"150k" },
+      { id:12, name:"Irrigation Pump 8''", category:"irrigation", region:"northern", price:65000, location:"Gulu", features:["Diesel","8 inch"], image:"farm.jpeg", badge:"PUMP", dayRate:"65k" }
+    ];
+
+    // Rotating messages
+    const rotatingMessages = [
+      "🔥 New: Massey Ferguson 385 just listed in Wakiso!",
+      "🚜 Harvester available in Jinja - 250k/day",
+      "💧 Irrigation system now in Gulu - 120k/day",
+      "🌾 Disc plough in Mbarara - 45k/day",
+      "⭐ 5 new tractors added in Central region",
+      "✅ Admin approved 8 machines today!",
+      "📢 Special: 10% off on weekly hires"
+    ];
+
+    let currentMessageIndex = 0;
+    let selectedMachine = "";
+
+    // Rotate messages
+    setInterval(() => {
+      currentMessageIndex = (currentMessageIndex + 1) % rotatingMessages.length;
+      document.getElementById('rotatingMachine').textContent = rotatingMessages[currentMessageIndex];
+    }, 4000);
+
+    // Render machines
+    function renderMachines(filteredMachines) {
+      const grid = document.getElementById('machineGrid');
+      grid.innerHTML = '';
+      
+      filteredMachines.forEach((m, index) => {
+        const imgClass = m.image.includes('farm1') ? 'img-tractor' : 
+                        m.image.includes('farm2') ? 'img-harvester' : 
+                        m.image.includes('farm3') ? 'img-plow' : 'img-irrigation';
+        
+        const card = document.createElement('div');
+        card.className = `machine-card card-${index+1}`;
+        card.innerHTML = `
+          <div class="card-img ${imgClass}"><div class="price-tag">${m.dayRate} UGX/day</div></div>
+          <div class="card-content">
+            <h3>${m.name}</h3>
+            <span class="category-badge">${m.badge}</span>
+            <div class="location"><i class="fas fa-map-pin"></i> ${m.location}, ${m.region}</div>
+            <div class="features">
+              ${m.features.map(f => `<span><i class="fas fa-check-circle" style="color:#c9a22b;"></i> ${f}</span>`).join('')}
+            </div>
+            <button class="btn-hire" onclick="openHirePopup('${m.name}')"><i class="fas fa-hand-pointer"></i> Request to Hire</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      document.getElementById('visibleCount').textContent = filteredMachines.length;
+    }
+
+    // Filter machines
+    function filterMachines() {
+      const category = document.getElementById('categoryFilter').value;
+      const region = document.getElementById('regionFilter').value;
+      const maxPrice = parseInt(document.getElementById('priceRange').value);
+      
+      const filtered = machines.filter(m => {
+        return (category === 'all' || m.category === category) &&
+               (region === 'all' || m.region === region) &&
+               m.price <= maxPrice;
+      });
+      
+      renderMachines(filtered);
+    }
+
+    // Price range display
+    document.getElementById('priceRange').addEventListener('input', function() {
+      document.getElementById('priceValue').textContent = `Up to ${(this.value/1000).toFixed(0)}k UGX`;
+    });
+
+    // Popup controls - HIRE
+    function openHirePopup(machineName) {
+      selectedMachine = machineName;
+      document.getElementById('machineName').value = machineName;
+      document.getElementById('hirePopup').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Set default date to today
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('hireDate').value = today;
+    }
+
+    function closeHirePopup() {
+      document.getElementById('hirePopup').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Popup controls - LIST
+    function openListForm() {
+      document.getElementById('listPopup').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeListPopup() {
+      document.getElementById('listPopup').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Submit hire form
+    function submitHireForm(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('hirerName').value;
+      const phone = document.getElementById('hirerPhone').value;
+      const district = document.getElementById('hirerDistrict').value;
+      const machine = document.getElementById('machineName').value;
+      const duration = document.getElementById('hireDuration').value;
+      const date = document.getElementById('hireDate').value;
+      const notes = document.getElementById('hireNotes').value;
+      const method = document.querySelector('input[name="hireContactMethod"]:checked').value;
+      
+      const message = `🚜 *NEW HIRE REQUEST - FarmEquip Uganda*%0A%0A` +
+                      `👤 *Name:* ${name}%0A` +
+                      `📞 *Phone:* ${phone}%0A` +
+                      `📍 *District:* ${district}%0A` +
+                      `⚙️ *Machine:* ${machine}%0A` +
+                      `⏱️ *Duration:* ${duration}%0A` +
+                      `📅 *Start Date:* ${date}%0A` +
+                      `📝 *Notes:* ${notes || 'None'}%0A%0A` +
+                      `_Please connect this farmer with the verified owner._`;
+      
+      if (method === 'whatsapp') {
+        window.open(`https://wa.me/256779185824?text=${message}`, '_blank');
+        alert('✅ Redirecting to WhatsApp to send your hire request!');
+      } else {
+        window.location.href = `mailto:paddypride6@gmail.com?subject=HIRE REQUEST: ${machine}&body=${message.replace(/%0A/g, '\n')}`;
+        alert('✅ Opening email client to send your request!');
+      }
+      
+      closeHirePopup();
+    }
+
+    // Submit list form
+    function submitListForm(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('ownerName').value;
+      const phone = document.getElementById('ownerPhone').value;
+      const email = document.getElementById('ownerEmail').value;
+      const machineType = document.getElementById('machineType').value;
+      const rate = document.getElementById('dailyRate').value;
+      const district = document.getElementById('machineDistrict').value;
+      const village = document.getElementById('machineVillage').value;
+      const features = document.getElementById('machineFeatures').value;
+      const method = document.querySelector('input[name="listContactMethod"]:checked').value;
+      
+      const message = `📋 *NEW MACHINE LISTING - FarmEquip Uganda*%0A%0A` +
+                      `👤 *Owner:* ${name}%0A` +
+                      `📞 *Phone:* ${phone}%0A` +
+                      `📧 *Email:* ${email || 'Not provided'}%0A%0A` +
+                      `⚙️ *Machine Type:* ${machineType}%0A` +
+                      `💰 *Daily Rate:* UGX ${rate}%0A` +
+                      `📍 *Location:* ${district}${village ? ' - '+village : ''}%0A` +
+                      `📋 *Features:* ${features || 'Not specified'}%0A%0A` +
+                      `_Please review and approve this machine for the marketplace._`;
+      
+      if (method === 'whatsapp') {
+        window.open(`https://wa.me/256779185824?text=${message}`, '_blank');
+        alert('✅ Redirecting to WhatsApp to send your listing request! Please send photos separately.');
+      } else {
+        window.location.href = `mailto:paddypride6@gmail.com?subject=NEW LISTING: ${machineType}&body=${message.replace(/%0A/g, '\n')}`;
+        alert('✅ Opening email client to send your listing request!');
+      }
+      
+      closeListPopup();
+    }
+
+    // Click outside to close
+    window.onclick = function(event) {
+      const hirePopup = document.getElementById('hirePopup');
+      const listPopup = document.getElementById('listPopup');
+      if (event.target === hirePopup) closeHirePopup();
+      if (event.target === listPopup) closeListPopup();
+    };
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMachines(machines);
+    });
+
+    // Make functions global
+    window.filterMachines = filterMachines;
+    window.openHirePopup = openHirePopup;
+    window.closeHirePopup = closeHirePopup;
+    window.openListForm = openListForm;
+    window.closeListPopup = closeListPopup;
+    window.submitHireForm = submitHireForm;
+    window.submitListForm = submitListForm;
+  </script>
+</body>
+</html>
